@@ -1,0 +1,40 @@
+<!-- <h1>{{title}}</h1>
+ <button (click)="onClick()">Click me</button>
+ <input #box (keyup.enter)="onKey(box.value)" (blur)="onKey(box.value)">
+ <p *ngIf="value.length > 20">{{value}}</p>
+ 
+ <ul>
+   <li *ngFor="let pokemon of pokemons">{{pokemon.name}}</li>
+ </ul> -->
+
+<h1 class="center">Pokemons</h1>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let pokemon of pokemons" class="col s6 m4">
+      <div
+        class="card horizontal"
+        (click)="selectPokemon(pokemon)"
+        appBorderCard="yellow"
+      >
+        <div class="card-image">
+          <img [src]="pokemon.picture" />
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>{{ pokemon.name }}</p>
+            <p>
+              <!-- <small>{{ pokemon.created | date: "dd/MM/yyyy" }}</small> -->
+              <small>{{ pokemon.created | date | uppercase }}</small>
+            </p>
+            <span
+              *ngFor="let type of pokemon.types"
+              class="{{ type | pokemonTypeColor }}"
+            >
+              {{ type }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
