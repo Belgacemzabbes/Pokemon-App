@@ -1,30 +1,12 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-// selector: 'app-detail-pokemon',
-// templateUrl: './detail-pokemon.component.html',
-// styleUrls: ['./detail-pokemon.component.css']
-// })
-// export class DetailPokemonComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { PokemonComponent } from '../pokemon/pokemon.component';
-import { POKEMONS } from '../mockPokemon';
 import { PokemonService} from '../pokemon.service'
 
 @Component({
   selector: 'app-detail-pokemon',
   templateUrl: './detail-pokemon.component.html',
   styleUrls: ['./detail-pokemon.component.css'],
-  providers: [PokemonService]
 })
 export class DetailPokemonComponent implements OnInit {
   pokemon: PokemonComponent = null;
@@ -40,5 +22,9 @@ export class DetailPokemonComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/pokemons']);
+  }
+  goEdit(pokemon: PokemonComponent) : void {
+    let link =['/pokemon/edit', pokemon.id];
+    this.router.navigate(link)
   }
 }
