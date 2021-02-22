@@ -10,12 +10,16 @@ import { PokemonService } from '../pokemon.service'
 
 })
 export class ListPokemonComponent implements OnInit {
-  pokemons: PokemonComponent[];
+  pokemons: PokemonComponent[] = null;
   constructor(private router: Router, private pokemonService: PokemonService ) {}
-  ngOnInit() {
-    this.pokemons = this.pokemonService.getPokemons();
+  ngOnInit() : void{
+    this.getPokemons();
   }
-  selectPokemon(pokemon: PokemonComponent) {
+
+  getPokemons(): void {
+    this.pokemonService.getPokemons().subscribe(pokemons => this.pokemons = pokemons)
+  }
+    selectPokemon(pokemon: PokemonComponent) {
     // alert('You just selected ' + pokemon.name);
     let link = ['/pokemon', pokemon.id];
     this.router.navigate(link);

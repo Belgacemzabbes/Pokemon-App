@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonService } from './pokemon.service';
+import { ThrowStmt } from '@angular/compiler';
   
 @Component({
   selector: 'pokemon-form',
@@ -56,8 +57,11 @@ export class PokemonFormComponent implements OnInit {
     // La méthode appelée lorsque le formulaire est soumis.
     onSubmit(): void {
         console.log("Submit form !");
-        let link = ['/pokemon', this.pokemon.id];
-        this.router.navigate(link);
+        this.pokemonService.updatePokemon(this.pokemon)
+        .subscribe(( )=> this.goBack());
     }
   
+    goBack(): void{
+        let link = ['/pokemon', this.pokemon.id];
+        this.router.navigate(link);    }
 }
