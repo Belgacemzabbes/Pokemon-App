@@ -9,12 +9,16 @@ import {PokemonService} from './pokemon.service'
 import {FormsModule} from '@angular/forms'
 import {EditPokemonComponent} from './edit-pokemon.component'
 import {PokemonFormComponent} from './pokemon-form.component' 
+import {PokemonSearchComponent} from './search-pokemon.component'
+import {LoaderComponent} from '../loader.component'
 @NgModule({
   declarations: [
     DetailPokemonComponent,
     ListPokemonComponent,
     EditPokemonComponent,
     PokemonFormComponent,
+    PokemonSearchComponent,
+    LoaderComponent,
     BorderCardDirective,
     PokemonTypeColorPipe,
     

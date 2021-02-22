@@ -57,6 +57,15 @@ export class PokemonService {
       pipe(tap(_=>this.log(`updated pokemon id=${pokemon.id}`)),
       catchError(this.handleError<any>('updatedPokemon')))
     }
+
+    searchPokemons(term: string): Observable<PokemonComponent[]>{
+      if( !term.trim()){return of([])}
+
+      return this.http.get<PokemonComponent[]>(`${this.pokemonsUrl}/?name=${term}`).pipe(
+        tap(_=> this.log(`found pokemons matching "${term}"`)),
+        catchError(this.handleError<PokemonComponent[]>('searchPokemons', [])));
+        
+    }
     
 
     getPokemonTypes() : String[]{
