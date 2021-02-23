@@ -11,6 +11,7 @@ import {EditPokemonComponent} from './edit-pokemon.component'
 import {PokemonFormComponent} from './pokemon-form.component' 
 import {PokemonSearchComponent} from './search-pokemon.component'
 import {LoaderComponent} from '../loader.component'
+import { AuthGuard} from '../auth-guard.service'
 @NgModule({
   declarations: [
     DetailPokemonComponent,
@@ -28,6 +29,6 @@ import {LoaderComponent} from '../loader.component'
     FormsModule,
     PokemonRoutingModule
   ],
-  providers:[PokemonService]
+  providers:[PokemonService, AuthGuard]
 })
 export class PokemonsModule { }
